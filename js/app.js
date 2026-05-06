@@ -5,7 +5,6 @@ import './pwa.js';
 
 const svg      = document.getElementById('trig');
 const range    = document.getElementById('angle-range');
-const numInput = document.getElementById('angle-num');
 const tSym     = document.getElementById('t-sym');
 const tProj    = document.getElementById('t-proj');
 const tTan     = document.getElementById('t-tan');
@@ -55,8 +54,7 @@ tc.onAngleChange(a => {
   const t = tanSafe(r);
   rTan.textContent = isFinite(t) ? formatNumber(t, 3) : '∞';
 
-  if (document.activeElement !== range)    range.value    = String(Math.round(a));
-  if (document.activeElement !== numInput) numInput.value = String(Math.round(a));
+  if (document.activeElement !== range) range.value = String(Math.round(a));
 
   if (graphs.sin) graphs.sin.update(a);
   if (graphs.cos) graphs.cos.update(a);
@@ -67,10 +65,6 @@ tc.onAngleChange(a => {
 
 // ── controls ────────────────────────────────────────────────────────────
 range.addEventListener('input',  e => tc.setAngle(Number(e.target.value)));
-numInput.addEventListener('input', e => {
-  const v = Number(e.target.value);
-  if (Number.isFinite(v)) tc.setAngle(v);
-});
 tSym.addEventListener('change',  e => tc.setShowSym(e.target.checked));
 tProj.addEventListener('change', e => tc.setShowProj(e.target.checked));
 tTan.addEventListener('change',  e => tc.setShowTan(e.target.checked));
@@ -99,6 +93,5 @@ btnLock.addEventListener('click', e => {
 // reset slider thumb visually when locked (tc.setAngle is a no-op when locked)
 range.addEventListener('input', e => { if (locked) e.target.value = String(Math.round(tc.getAngle())); });
 
-// ── init: rows already hidden via inline style in HTML ───────────────────
-range.value    = String(Math.round(initial));
-numInput.value = String(Math.round(initial));
+// ── init ─────────────────────────────────────────────────────────────────
+range.value = String(Math.round(initial));
