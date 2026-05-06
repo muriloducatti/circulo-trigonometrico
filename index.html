@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Círculo Trigonométrico</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/icon-192.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <img src="assets/logo.svg" alt="" class="logo" width="30" height="30" />
+    <h1>Círculo Trigonométrico</h1>
+  </header>
+
+  <main class="layout">
+
+    <!-- coluna esquerda: círculo + gráficos -->
+    <div class="left-col">
+
+      <section class="canvas-wrap" aria-label="Círculo trigonométrico interativo">
+        <svg id="trig" viewBox="-150 -150 300 300" preserveAspectRatio="xMidYMid meet"
+             role="application" aria-label="Arraste o ponto para alterar o ângulo"></svg>
+        <button id="btn-lock" aria-pressed="false" title="Travar/destravar o ângulo">
+          🔓 trava
+        </button>
+      </section>
+
+      <!-- gráficos logo abaixo do círculo -->
+      <section id="graph-section" class="graph-section" aria-label="Gráficos trigonométricos">
+        <div id="g-sin" class="graph-row" style="display:none"></div>
+        <div id="g-cos" class="graph-row" style="display:none"></div>
+        <div id="g-tan" class="graph-row" style="display:none"></div>
+      </section>
+
+    </div>
+
+    <!-- painel de controles -->
+    <aside class="panel">
+
+      <div class="readout" id="readout" aria-live="polite">
+        <div><span>θ</span><strong id="r-deg">0°</strong></div>
+        <div><span>RAD</span><strong id="r-rad">0</strong></div>
+        <div><span>SEN</span><strong id="r-sin">0</strong></div>
+        <div><span>COS</span><strong id="r-cos">1</strong></div>
+        <div><span>TG</span><strong id="r-tan">0</strong></div>
+      </div>
+
+      <label class="slider-row">
+        <span>Ângulo</span>
+        <input type="range" id="angle-range" min="0" max="360" step="1" value="30" />
+      </label>
+
+      <div class="row">
+        <label class="num-wrap">
+          <span class="num-unit">°</span>
+          <input type="number" id="angle-num" min="0" max="360" step="1" value="30" />
+        </label>
+        <div class="toggles">
+          <label><input type="checkbox" id="t-sym"  checked /> Simétricos</label>
+          <label><input type="checkbox" id="t-proj" checked /> Projeções</label>
+          <label><input type="checkbox" id="t-tan"          /> Tangente</label>
+        </div>
+      </div>
+
+      <div class="graph-toggles">
+        <span class="gtog-label">Gráficos</span>
+        <label class="gtog sin-color"><input type="checkbox" id="tg-sin" /> sen</label>
+        <label class="gtog cos-color"><input type="checkbox" id="tg-cos" /> cos</label>
+        <label class="gtog tan-color"><input type="checkbox" id="tg-tan" /> tg</label>
+      </div>
+
+      <div class="quick" id="quick">
+        <button data-a="0">0°</button>
+        <button data-a="30">30°</button>
+        <button data-a="45">45°</button>
+        <button data-a="60">60°</button>
+        <button data-a="90">90°</button>
+        <button data-a="120">120°</button>
+        <button data-a="135">135°</button>
+        <button data-a="150">150°</button>
+        <button data-a="180">180°</button>
+        <button data-a="210">210°</button>
+        <button data-a="225">225°</button>
+        <button data-a="240">240°</button>
+        <button data-a="270">270°</button>
+        <button data-a="300">300°</button>
+        <button data-a="315">315°</button>
+        <button data-a="330">330°</button>
+      </div>
+
+    </aside>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

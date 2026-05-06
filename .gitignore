@@ -1,0 +1,19 @@
+# Firebase cache (não commitar)
+.firebase/
+
+# Editors
+.vscode/
+.idea/
+*.suo
+*.user
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Deps (não há, mas por precaução)
+node_modules/
