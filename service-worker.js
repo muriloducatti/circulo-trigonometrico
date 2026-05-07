@@ -1,7 +1,7 @@
 // Bump CACHE_NAME whenever you want to force eviction of old caches.
 // With network-first strategy below, content updates are always fetched fresh
 // from the network — this name only controls cleanup of stale cache buckets.
-const CACHE_NAME = 'trig-circle-v10';
+const CACHE_NAME = 'trig-circle-v11';
 
 const PRECACHE = [
   './',
