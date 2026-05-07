@@ -78,8 +78,10 @@ body {
   }
   /* Cap suave para telas muito largas (não vira um círculo gigantesco) */
   .canvas-wrap { max-width: 680px; justify-self: end; width: 100%; }
-  /* Empurra a coluna de gráficos para o final, alinhando com a base do círculo */
-  .graph-section { align-self: end; }
+  /* Gráficos começam logo abaixo do painel e crescem de cima para baixo
+     conforme são selecionados. Quando todos os 3 estão ativos, naturalmente
+     se estendem até a base do círculo. */
+  .graph-section { align-self: start; }
 }
 
 /* ── canvas ──────────────────────────────────────────────────────── */
