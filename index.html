@@ -18,25 +18,20 @@
 
   <main class="layout">
 
-    <!-- coluna esquerda: círculo + gráficos -->
-    <div class="left-col">
+    <section class="canvas-wrap" aria-label="Círculo trigonométrico interativo">
+      <svg id="trig" viewBox="-150 -150 300 300" preserveAspectRatio="xMidYMid meet"
+           role="application" aria-label="Arraste o ponto para alterar o ângulo"></svg>
+      <button id="btn-lock" aria-pressed="false" title="Travar/destravar o ângulo">
+        🔓 trava
+      </button>
+    </section>
 
-      <section class="canvas-wrap" aria-label="Círculo trigonométrico interativo">
-        <svg id="trig" viewBox="-150 -150 300 300" preserveAspectRatio="xMidYMid meet"
-             role="application" aria-label="Arraste o ponto para alterar o ângulo"></svg>
-        <button id="btn-lock" aria-pressed="false" title="Travar/destravar o ângulo">
-          🔓 trava
-        </button>
-      </section>
-
-      <!-- gráficos logo abaixo do círculo -->
-      <section id="graph-section" class="graph-section" aria-label="Gráficos trigonométricos">
-        <div id="g-sin" class="graph-row" style="display:none"></div>
-        <div id="g-cos" class="graph-row" style="display:none"></div>
-        <div id="g-tan" class="graph-row" style="display:none"></div>
-      </section>
-
-    </div>
+    <!-- gráficos: no mobile entre círculo e painel; no desktop abaixo do painel -->
+    <section id="graph-section" class="graph-section" aria-label="Gráficos trigonométricos">
+      <div id="g-sin" class="graph-row" style="display:none"></div>
+      <div id="g-cos" class="graph-row" style="display:none"></div>
+      <div id="g-tan" class="graph-row" style="display:none"></div>
+    </section>
 
     <!-- painel de controles -->
     <aside class="panel">

@@ -47,45 +47,34 @@ body {
 
 /* ── main layout ─────────────────────────────────────────────────── */
 /*
-  Mobile  : left-col (canvas + graphs) → panel  — stacked
-  Desktop : left-col | panel  — side by side
+  Mobile  : circle → graphs → panel (1 coluna)
+  Desktop : [circle] [panel]
+            [circle] [graphs]   (gráficos abaixo do painel à direita)
 */
 .layout {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: .9rem;
   padding: .9rem;
   max-width: 1140px;
   margin: 0 auto;
+  grid-template-areas:
+    "circle"
+    "graphs"
+    "panel";
 }
+.canvas-wrap   { grid-area: circle; }
+.panel         { grid-area: panel; min-width: 0; }
+.graph-section { grid-area: graphs; min-width: 0; }
+
 @media (min-width: 860px) {
   .layout {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-  /* On desktop, fix left-col width so the canvas doesn't blow up to fill
-     the entire viewport height (which would push the graphs off-screen). */
-  .left-col {
-    flex: 0 0 460px;
-    max-width: 460px;
-  }
-  .panel {
-    flex: 1 1 auto;
-    max-width: 600px;
+    grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+    grid-template-areas:
+      "circle panel"
+      "circle graphs";
+    align-items: start;
   }
 }
-
-/* left column: circles + graphs stacked */
-.left-col {
-  display: flex;
-  flex-direction: column;
-  gap: .9rem;
-  flex: 1 1 0;
-  min-width: 0;
-}
-
-/* panel fills remaining space on desktop, full width on mobile */
-.panel { flex: 1 1 0; min-width: 0; }
 
 /* ── canvas ──────────────────────────────────────────────────────── */
 .canvas-wrap {
