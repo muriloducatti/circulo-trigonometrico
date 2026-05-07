@@ -55,7 +55,7 @@ body {
   display: grid;
   gap: .9rem;
   padding: .9rem;
-  max-width: 1140px;
+  max-width: 1400px;
   margin: 0 auto;
   grid-template-areas:
     "circle"
@@ -68,13 +68,16 @@ body {
 
 @media (min-width: 860px) {
   .layout {
-    grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+    /* 50/50 — círculo cresce, painel/gráficos comprimem */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: auto 1fr;
     grid-template-areas:
       "circle panel"
       "circle graphs";
     align-items: start;
   }
+  /* Cap suave para telas muito largas (não vira um círculo gigantesco) */
+  .canvas-wrap { max-width: 680px; justify-self: end; width: 100%; }
   /* Empurra a coluna de gráficos para o final, alinhando com a base do círculo */
   .graph-section { align-self: end; }
 }
@@ -124,11 +127,11 @@ body {
 
 /* ── panel ───────────────────────────────────────────────────────── */
 .panel {
-  display: flex; flex-direction: column; gap: .85rem;
+  display: flex; flex-direction: column; gap: .65rem;
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: .95rem;
+  border-radius: 14px;
+  padding: .75rem;
 }
 
 /* ── readout (linha única, compacta) ─────────────────────────────── */
@@ -198,15 +201,16 @@ input[type=range] { width: 100%; accent-color: var(--accent); cursor: pointer; }
 /* ── quick buttons ───────────────────────────────────────────────── */
 .quick {
   display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-  gap: .3rem;
+  /* auto-fit: 8 cols se couber, menos se a coluna for estreita */
+  grid-template-columns: repeat(auto-fit, minmax(52px, 1fr));
+  gap: .25rem;
 }
 @media (max-width: 520px) { .quick { grid-template-columns: repeat(4, 1fr); } }
 .quick button {
   background: var(--card); color: var(--muted);
-  border: 1px solid var(--border); border-radius: 8px;
-  padding: .42rem .1rem;
-  font: inherit; font-size: .82rem;
+  border: 1px solid var(--border); border-radius: 7px;
+  padding: .32rem .1rem;
+  font: inherit; font-size: .76rem;
   cursor: pointer;
   font-variant-numeric: tabular-nums;
   transition: border-color .15s, color .15s;
