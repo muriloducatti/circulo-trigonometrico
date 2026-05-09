@@ -44,10 +44,16 @@
         <div><span>TG</span><strong id="r-tan">0</strong></div>
       </div>
 
-      <label class="slider-row">
-        <span>Ângulo</span>
+      <div class="slider-row">
+        <div class="slider-header">
+          <span>Ângulo</span>
+          <label class="num-wrap">
+            <input type="number" id="angle-num" min="0" max="360" step="1" value="30" />
+            <span class="num-unit">°</span>
+          </label>
+        </div>
         <input type="range" id="angle-range" min="0" max="360" step="1" value="30" />
-      </label>
+      </div>
 
       <div class="toggles">
         <label><input type="checkbox" id="t-sym"  checked /> Simétricos</label>

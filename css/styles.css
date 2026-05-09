@@ -167,7 +167,9 @@ body {
 
 /* ── slider ──────────────────────────────────────────────────────── */
 .slider-row { display: flex; flex-direction: column; gap: .3rem; }
-.slider-row span { color: var(--muted); font-size: .8rem; font-weight: 500; }
+.slider-row > span,
+.slider-header > span { color: var(--muted); font-size: .8rem; font-weight: 500; }
+.slider-header { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
 input[type=range] { width: 100%; accent-color: var(--accent); cursor: pointer; }
 
 /* ── num + toggles ────────────────────────────────────────────────── */
